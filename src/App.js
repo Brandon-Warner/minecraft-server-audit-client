@@ -126,14 +126,14 @@ const App = () => {
                             <TableRow key='headers'>
                                 <TableCell>Name</TableCell>
                                 <TableCell>Hostname</TableCell>
-                                <TableCell>Online</TableCell>
                                 <TableCell>Ip</TableCell>
                                 <TableCell>Version</TableCell>
+                                <TableCell>Active</TableCell>
                                 <TableCell>Players Online</TableCell>
                                 <TableCell>Players Max</TableCell>
                                 <TableCell>Blocked</TableCell>
-                                <TableCell>Blocked Time</TableCell>
-                                <TableCell>Offline Mode</TableCell>
+                                <TableCell>Blocked Date</TableCell>
+                                <TableCell>Mode</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

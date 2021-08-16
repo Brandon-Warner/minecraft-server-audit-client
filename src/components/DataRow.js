@@ -21,9 +21,9 @@ const DataRow = ({ data, loading }) => {
         <TableRow className={`${hideWhenLoading}`}>
             <TableCell position='sticky'>{data.name}</TableCell>
             <TableCell>{data.hostname}</TableCell>
-            <TableCell>{data.online}</TableCell>
             <TableCell>{data.ip}</TableCell>
             <TableCell>{data.version}</TableCell>
+            <TableCell>{data.online}</TableCell>
             <TableCell>{data.playersOnline}</TableCell>
             <TableCell>{data.playersMax}</TableCell>
             <TableCell>{data.blocked}</TableCell>

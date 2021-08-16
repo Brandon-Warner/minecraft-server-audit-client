@@ -52,14 +52,13 @@ const fetchData = async name => {
     const allData = {
         name: name,
         hostname: serverInfo.hostname,
-        online: isOnline(serverInfo.online),
         ip: serverInfo.ip,
         version: serverInfo.version || 'N/A',
+        online: isOnline(serverInfo.online),
         playersOnline: isPlayersOnline(serverInfo),
         playersMax: isPlayersMax(serverInfo),
         blocked: isBlocked(blockInfo.blocked),
         blockTime: formatDate(blockInfo.lastBlocked),
-        offlineMode: 'N/A',
     }
     console.log('allData: ', allData)
     return allData
