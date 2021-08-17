@@ -19,7 +19,7 @@ const DataRow = ({ data, loading }) => {
 
     return (
         <TableRow className={`${hideWhenLoading}`}>
-            <TableCell position='sticky'>{data.name}</TableCell>
+            <TableCell>{data.name}</TableCell>
             <TableCell>{data.hostname}</TableCell>
             <TableCell>{data.ip}</TableCell>
             <TableCell>{data.version}</TableCell>

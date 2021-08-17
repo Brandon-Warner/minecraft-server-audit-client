@@ -6,7 +6,6 @@ import { getData } from './reducers/dataReducer'
 import { useDispatch, useSelector } from 'react-redux'
 
 import {
-    Container,
     makeStyles,
     Table,
     TableCell,
@@ -29,6 +28,10 @@ const useStyles = makeStyles(() => ({
     container: {
         fontFamily: 'Roboto',
         border: '0',
+    },
+    tableBody: {
+        display: 'block',
+        overflow: 'auto',
     },
     headers: {
         fontStyle: 'bold',
@@ -111,7 +114,7 @@ const App = () => {
     console.log('loading status: ', loading)
 
     return (
-        <Container className={classes.container}>
+        <div className={classes.container}>
             <div>
                 <Title />
                 <Subtitle />
@@ -121,7 +124,7 @@ const App = () => {
                     <FilterCheckBox />
                 </div>
                 <TableContainer component={Paper}>
-                    <Table aria-label='Server Info'>
+                    <Table aria-label='Server Info' stickyHeader={true}>
                         <TableHead className={classes.headers}>
                             <TableRow key='headers'>
                                 <TableCell>Name</TableCell>
@@ -148,7 +151,22 @@ const App = () => {
                     </Table>
                 </TableContainer>
             </div>
-        </Container>
+            <div style={{ display: 'inline' }}>
+                <footer>
+                    <a href='https://api.mcsrvstat.us/' target='_blank' rel='noopener noreferrer'>
+                        Server Info API
+                    </a>
+                    {'  '}
+                    <a
+                        href='https://ismyserverblocked.com/'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        Block & Offline Data API
+                    </a>
+                </footer>
+            </div>
+        </div>
     )
 }
 
