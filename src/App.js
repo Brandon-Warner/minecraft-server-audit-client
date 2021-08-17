@@ -30,7 +30,9 @@ const useStyles = makeStyles(() => ({
         border: '0'
     },
     table: {
-        minHeight: '350'
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
     },
     tableBody: {
         display: 'block',
@@ -42,6 +44,9 @@ const useStyles = makeStyles(() => ({
     filterRow: {
         display: 'flex',
         flexDirection: 'row'
+    },
+    links: {
+        margin: '10'
     }
 }))
 
@@ -127,7 +132,7 @@ const App = () => {
                     <FilterCheckBox />
                 </div>
                 <TableContainer component={Paper}>
-                    <Table aria-label='Server Info' stickyHeader={true}>
+                    <Table className={classes.table} aria-label='Server Info' stickyHeader={true}>
                         <TableHead className={classes.headers}>
                             <TableRow key='headers'>
                                 <TableCell>Name</TableCell>
@@ -154,13 +159,19 @@ const App = () => {
                     </Table>
                 </TableContainer>
             </div>
-            <div style={{ display: 'inline' }}>
-                <footer>
-                    <a href='https://api.mcsrvstat.us/' target='_blank' rel='noopener noreferrer'>
+            <div style={{ textAlign: 'center' }}>
+                <footer style={{ display: 'inline', width: '100%' }}>
+                    <a
+                        style={{ margin: '0 10px' }}
+                        href='https://api.mcsrvstat.us/'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
                         Server Data API
                     </a>
                     {'  '}
                     <a
+                        style={{ margin: '0 10px' }}
                         href='https://ismyserverblocked.com/'
                         target='_blank'
                         rel='noopener noreferrer'
