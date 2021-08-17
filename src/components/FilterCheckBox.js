@@ -1,16 +1,17 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setFilter } from '../reducers/filterReducer'
 import { makeStyles, Radio, RadioGroup, FormControl, FormControlLabel } from '@material-ui/core'
 
 const useStyles = makeStyles(() => ({
     filterCheckBox: {
-        margin: '0 auto',
-    },
+        margin: '0 auto'
+    }
 }))
 
 const FilterCheckBox = () => {
     const classes = useStyles()
     const dispatch = useDispatch()
+    const state = useSelector(state => state.filter)
     return (
         <FormControl className={classes.filterCheckBox} component='fieldset'>
             <RadioGroup row aria-label='position' name='position' defaultValue='top'>
@@ -19,6 +20,7 @@ const FilterCheckBox = () => {
                     control={<Radio color='primary' />}
                     label='All'
                     labelPlacement='top'
+                    checked={state === 'NO_FILTER'}
                     onClick={() => dispatch(setFilter('NO_FILTER'))}
                 />
                 <FormControlLabel

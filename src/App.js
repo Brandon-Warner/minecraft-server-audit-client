@@ -13,7 +13,7 @@ import {
     TableHead,
     TableBody,
     TableRow,
-    Paper,
+    Paper
 } from '@material-ui/core'
 
 import Title from './components/Title'
@@ -27,19 +27,22 @@ import Loading from './components/Loading'
 const useStyles = makeStyles(() => ({
     container: {
         fontFamily: 'Roboto',
-        border: '0',
+        border: '0'
+    },
+    table: {
+        minHeight: '350'
     },
     tableBody: {
         display: 'block',
-        overflow: 'auto',
+        overflow: 'auto'
     },
     headers: {
-        fontStyle: 'bold',
+        fontStyle: 'bold'
     },
     filterRow: {
         display: 'flex',
-        flexDirection: 'row',
-    },
+        flexDirection: 'row'
+    }
 }))
 
 const App = () => {
@@ -154,7 +157,7 @@ const App = () => {
             <div style={{ display: 'inline' }}>
                 <footer>
                     <a href='https://api.mcsrvstat.us/' target='_blank' rel='noopener noreferrer'>
-                        Server Info API
+                        Server Data API
                     </a>
                     {'  '}
                     <a
@@ -162,7 +165,7 @@ const App = () => {
                         target='_blank'
                         rel='noopener noreferrer'
                     >
-                        Block & Offline Data API
+                        Block/Offline Data API
                     </a>
                 </footer>
             </div>
