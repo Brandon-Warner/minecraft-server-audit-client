@@ -39,7 +39,8 @@ const useStyles = makeStyles(() => ({
         overflow: 'auto'
     },
     headers: {
-        fontStyle: 'bold'
+        fontStyle: 'bold',
+        backgroundColor: '#eee'
     },
     filterRow: {
         display: 'flex',
@@ -90,7 +91,8 @@ const App = () => {
     const handleFileUpload = e => {
         e.preventDefault()
         setLoading(true)
-
+        dispatch(getNames([]))
+        dispatch()
         const file = e.target.files[0]
         const reader = new FileReader()
         reader.onload = e => {
@@ -132,7 +134,7 @@ const App = () => {
                     <FilterCheckBox />
                 </div>
                 <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label='Server Info' stickyHeader={true}>
+                    <Table className={classes.table} aria-label='Server Info'>
                         <TableHead className={classes.headers}>
                             <TableRow key='headers'>
                                 <TableCell>Name</TableCell>
