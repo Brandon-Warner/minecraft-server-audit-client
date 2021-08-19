@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import * as XLSX from 'xlsx'
 import fetchHelper from './services/servers'
-import { getNames } from './reducers/namesReducer'
-import { getData } from './reducers/dataReducer'
+import { getNames, resetNames } from './reducers/namesReducer'
+import { getData, resetData } from './reducers/dataReducer'
 import { useDispatch, useSelector } from 'react-redux'
 
 import {
@@ -91,8 +91,8 @@ const App = () => {
     const handleFileUpload = e => {
         e.preventDefault()
         setLoading(true)
-        dispatch(getNames([]))
-        dispatch()
+        dispatch(resetNames())
+        dispatch(resetData())
         const file = e.target.files[0]
         const reader = new FileReader()
         reader.onload = e => {

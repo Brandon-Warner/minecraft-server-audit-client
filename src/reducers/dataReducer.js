@@ -2,7 +2,15 @@ export const getData = data => {
     return async dispatch => {
         dispatch({
             type: 'GET_DATA',
-            data: data,
+            data: data
+        })
+    }
+}
+
+export const resetData = () => {
+    return async dispatch => {
+        dispatch({
+            type: 'RESET_DATA'
         })
     }
 }
@@ -12,6 +20,9 @@ const dataReducer = (state = [], action) => {
     switch (action.type) {
         case 'GET_DATA':
             return [...state, action.data]
+        case 'RESET_DATA':
+            state = []
+            return state
         default:
             return state
     }
