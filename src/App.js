@@ -88,6 +88,18 @@ const App = () => {
         stopLoading(names, data)
     })
 
+    const refreshData = e => {
+        e.preventDefault()
+        setLoading(true)
+        const currentNames = names
+        console.log('refreshData names: ', currentNames)
+        dispatch(resetData())
+        dispatch(resetNames())
+        setTimeout(() => {
+            dispatch(getNames(currentNames))
+        }, 200)
+    }
+
     const handleFileUpload = e => {
         e.preventDefault()
         setLoading(true)
@@ -128,7 +140,7 @@ const App = () => {
             <div>
                 <Title />
                 <Subtitle />
-                <Input onChange={handleFileUpload} />
+                <Input onChange={handleFileUpload} refreshData={refreshData} />
                 <div className={classes.filterRow}>
                     <Filter />
                     <FilterCheckBox />

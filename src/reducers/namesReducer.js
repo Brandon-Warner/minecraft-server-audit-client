@@ -16,8 +16,8 @@ const namesReducer = (state = [], action) => {
         case 'GET_NAMES':
             return action.data
         case 'RESET_NAMES':
-            state = []
-            return state
+            const newState = []
+            return newState
         default:
             return state
     }

@@ -21,8 +21,8 @@ const dataReducer = (state = [], action) => {
         case 'GET_DATA':
             return [...state, action.data]
         case 'RESET_DATA':
-            state = []
-            return state
+            const newState = []
+            return newState
         default:
             return state
     }
