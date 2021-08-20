@@ -9,8 +9,8 @@ const Subtitle = () => {
                 rel='noopener noreferrer'
                 target='_blank'
             >
-                <Button variant='contained' color='inherit'>
-                    Sample file
+                <Button variant='contained' color='inherit' size='small'>
+                    Sample CSV File
                 </Button>
             </a>
         </div>
