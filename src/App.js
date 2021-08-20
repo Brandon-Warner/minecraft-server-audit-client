@@ -25,8 +25,6 @@ import DataRow from './components/DataRow'
 import Loading from './components/Loading'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-
-
 const useStyles = makeStyles(() => ({
     container: {
         fontFamily: 'Roboto',
@@ -197,7 +195,7 @@ const App = () => {
                     </a>
                     <a
                         style={{ margin: '0 10px' }}
-                        href='https://github.com/Brandon-Warner/MinecraftServerApp'
+                        href='https://github.com/Brandon-Warner/minecraft-server-audit-client'
                         target='_blank'
                         rel='noopener noreferrer'
                     >
