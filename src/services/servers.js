@@ -54,7 +54,7 @@ const fetchData = async name => {
         hostname: serverInfo.hostname,
         ip: serverInfo.ip,
         version: serverInfo.version || 'N/A',
-        online: isOnline(serverInfo.online),
+        active: isOnline(serverInfo.online),
         playersOnline: isPlayersOnline(serverInfo),
         playersMax: isPlayersMax(serverInfo),
         blocked: isBlocked(blockInfo.blocked),

@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, TableRow, TableCell } from '@material-ui/core'
-import ActiveButton from './ActiveButton'
+import ModeButton from './ModeButton'
 
 const useStyles = makeStyles(() => ({
     hidden: {
@@ -23,12 +23,12 @@ const DataRow = ({ data, loading }) => {
             <TableCell>{data.hostname}</TableCell>
             <TableCell>{data.ip}</TableCell>
             <TableCell>{data.version}</TableCell>
-            <TableCell>{data.online}</TableCell>
+            <TableCell>{data.active}</TableCell>
             <TableCell>{data.playersOnline}</TableCell>
             <TableCell>{data.playersMax}</TableCell>
             <TableCell>{data.blocked}</TableCell>
             <TableCell>{data.blockTime}</TableCell>
-            <ActiveButton hostname={data.hostname} />
+            <ModeButton hostname={data.hostname} />
         </TableRow>
     )
 }

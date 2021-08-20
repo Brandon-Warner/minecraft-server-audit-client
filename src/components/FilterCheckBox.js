@@ -33,7 +33,7 @@ const FilterCheckBox = () => {
                 <FormControlLabel
                     value='AVAILABLE_FILTER'
                     control={<Radio color='primary' />}
-                    label='Available'
+                    label='Active'
                     labelPlacement='top'
                     onClick={() => dispatch(setFilter('AVAILABLE_FILTER'))}
                 />

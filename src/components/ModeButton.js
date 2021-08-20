@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
     },
 }))
 
-const ActiveButton = ({ hostname }) => {
+const ModeButton = ({ hostname }) => {
     const [open, setOpen] = useState(false)
     const [buttonLoading, setButtonLoading] = useState(false)
     const [fetchResponse, setFetchResponse] = useState('')
@@ -60,7 +60,7 @@ const ActiveButton = ({ hostname }) => {
     return (
         <TableCell>
             <Button variant='contained' color='primary' onClick={() => fetchData(hostname)}>
-                {buttonLoading ? <CircularProgress className={classes.buttonLoading} /> : 'Active?'}
+                {buttonLoading ? <CircularProgress className={classes.buttonLoading} /> : 'Mode'}
             </Button>
             <div>
                 <Modal
@@ -87,4 +87,4 @@ const ActiveButton = ({ hostname }) => {
     )
 }
 
-export default ActiveButton
+export default ModeButton

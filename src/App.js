@@ -64,7 +64,7 @@ const App = () => {
         } else if (filter === 'BLOCKED_FILTER') {
             return state.data.filter(data => data.blocked === 'yes')
         } else if (filter === 'AVAILABLE_FILTER') {
-            return state.data.filter(data => data.blocked === 'no')
+            return state.data.filter(data => data.active === 'yes')
         } else if (
             filter !== 'NO_FILTER' &&
             filter !== 'BLOCKED_FILTER' &&
