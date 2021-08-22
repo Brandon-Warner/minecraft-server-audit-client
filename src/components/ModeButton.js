@@ -5,7 +5,7 @@ import Modal from 'react-modal'
 
 const useStyles = makeStyles(() => ({
     buttonLoading: {
-        color: '#eee'
+        color: '#45a29e'
     }
 }))
 
@@ -18,7 +18,7 @@ const ModeButton = ({ hostname }) => {
 
     const customStyles = {
         content: {
-            fontFamily: 'Roboto',
+            fontFamily: 'Quicksand',
             position: 'absolute',
             top: '50%',
             left: '50%',

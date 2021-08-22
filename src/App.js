@@ -28,6 +28,9 @@ import Loading from './components/Loading'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const theme = createTheme({
+    typography: {
+        fontFamily: ['Quicksand'],
+    },
     palette: {
         primary: { main: '#66fcf1' },
         secondary: { main: '#45a29e' },
@@ -37,7 +40,7 @@ const theme = createTheme({
 
 const useStyles = makeStyles(() => ({
     container: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Quicksand',
         border: '0',
         margin: '0'
     },
@@ -187,7 +190,7 @@ const App = () => {
                     </TableContainer>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                    <footer style={{ display: 'inline', width: '100%'}}>
+                    <footer style={{ display: 'inline', width: '100%' }}>
                         <a
                             style={{ margin: '0 10px', color: '#66fcf1' }}
                             href='https://api.mcsrvstat.us/'
@@ -198,7 +201,7 @@ const App = () => {
                         </a>
                         {'  '}
                         <a
-                            style={{ margin: '0 10px',  color: '#66fcf1'  }}
+                            style={{ margin: '0 10px', color: '#66fcf1' }}
                             href='https://ismyserverblocked.com/'
                             target='_blank'
                             rel='noopener noreferrer'
@@ -206,7 +209,7 @@ const App = () => {
                             Block/Offline Data API
                         </a>
                         <a
-                            style={{ margin: '0 10px',  color: '#66fcf1'  }}
+                            style={{ margin: '0 10px', color: '#66fcf1' }}
                             href='https://github.com/Brandon-Warner/minecraft-server-audit-client'
                             target='_blank'
                             rel='noopener noreferrer'
