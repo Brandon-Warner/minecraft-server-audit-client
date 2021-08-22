@@ -5,8 +5,8 @@ import Modal from 'react-modal'
 
 const useStyles = makeStyles(() => ({
     buttonLoading: {
-        color: 'white',
-    },
+        color: '#eee'
+    }
 }))
 
 const ModeButton = ({ hostname }) => {
@@ -19,13 +19,15 @@ const ModeButton = ({ hostname }) => {
     const customStyles = {
         content: {
             fontFamily: 'Roboto',
+            position: 'absolute',
             top: '50%',
             left: '50%',
             right: 'auto',
             bottom: 'auto',
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
-        },
+            color: '#1f2833',
+        }
     }
 
     const fetchData = async hostname => {
@@ -68,13 +70,14 @@ const ModeButton = ({ hostname }) => {
                     onRequestClose={() => setOpen(false)}
                     ariaHideApp={false}
                     style={customStyles}
+                    className={classes.modal}
                 >
                     <h2>Active Status</h2>
                     {fetchResponse}
                     <br />
                     <br />
                     <Button
-                        variant='outlined'
+                        variant='contained'
                         color='secondary'
                         size='small'
                         onClick={() => setOpen(!open)}

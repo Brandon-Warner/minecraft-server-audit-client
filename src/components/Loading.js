@@ -3,11 +3,11 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 
 const useStyles = makeStyles(() => ({
     hidden: {
-        display: 'none',
+        display: 'none'
     },
     rows: {
-        backgroundColor: 'white',
-    },
+        backgroundColor: '#eee'
+    }
 }))
 
 const Loading = ({ loading, name }) => {
@@ -16,34 +16,34 @@ const Loading = ({ loading, name }) => {
     return (
         <TableRow key={name} className={`${showWhenLoading}`}>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
             <TableCell>
-                <LinearProgress />
+                <LinearProgress color='secondary' />
             </TableCell>
         </TableRow>
     )

@@ -4,6 +4,7 @@ import store from './store'
 import App from './App'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import './index.css'
 
 library.add(fab)
 

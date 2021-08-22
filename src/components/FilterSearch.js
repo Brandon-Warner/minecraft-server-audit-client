@@ -7,11 +7,14 @@ import SearchIcon from '@material-ui/icons/Search'
 
 const useStyles = makeStyles(() => ({
     filterTextField: {
-        width: '33%',
+        width: '33%'
     },
     filterSearch: {
-        width: '75%',
+        width: '75%'
     },
+    input: {
+        color: '#66fcf1'
+    }
 }))
 
 const Filter = () => {
@@ -23,12 +26,28 @@ const Filter = () => {
         dispatch(searchFilter(filter))
     }
     return (
-        <form className={classes.filterSearch} noValidate autoComplete='off'>
+        <form
+            style={{ margin: '1em' }}
+            className={classes.filterSearch}
+            noValidate
+            autoComplete='off'
+        >
             <TextField
+                color='primary'
                 className={classes.filterTextField}
                 id='standard-basic'
                 label='Search Names'
                 onChange={handleChange}
+                InputLabelProps={{
+                    classes: {
+                        root: classes.input
+                    }
+                }}
+                InputProps={{
+                    classes: {
+                        root: classes.input
+                    }
+                }}
             />
             <SearchIcon color='primary' />
         </form>

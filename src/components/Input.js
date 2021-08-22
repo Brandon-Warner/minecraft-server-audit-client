@@ -5,7 +5,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 const Input = ({ onChange, refreshData }) => {
     // const [loading, setLoading] = useState(false)
     return (
-        <div>
+        <div style={{ margin: '1em' }}>
             <Button variant='contained' color='primary' component='label'>
                 <input
                     type='file'
@@ -18,7 +18,7 @@ const Input = ({ onChange, refreshData }) => {
             </Button>
             <Button
                 variant='contained'
-                color='inherit'
+                color='secondary'
                 size='small'
                 style={{ marginLeft: '10px' }}
                 onClick={refreshData}
