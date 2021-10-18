@@ -69,6 +69,8 @@ const useStyles = makeStyles(() => ({
 
 const App = () => {
     const [loading, setLoading] = useState(false);
+    // const [page, setPage] = useState('multiple');
+
     const classes = useStyles();
 
     const dispatch = useDispatch();
