@@ -1,21 +1,25 @@
-import React from 'react'
-import { makeStyles, TableRow, TableCell } from '@material-ui/core'
-import ModeButton from './ModeButton'
+import React from 'react';
+import { makeStyles, TableRow, TableCell } from '@material-ui/core';
+import ModeButton from './ModeButton';
 
 const useStyles = makeStyles(() => ({
     hidden: {
-        display: 'none',
+        display: 'none'
     },
     rows: {
         backgroundColor: 'white',
-    },
-}))
+        '&:hover': {
+            backgroundColor: '#def2f1',
+            transitionDuration: '400ms'
+        }
+    }
+}));
 
 const DataRow = ({ data, loading }) => {
-    console.log('DATAROW DATA: ', data)
-    const classes = useStyles()
+    console.log('DATAROW DATA: ', data);
+    const classes = useStyles();
 
-    const hideWhenLoading = loading ? classes.hidden : classes.rows
+    const hideWhenLoading = loading ? classes.hidden : classes.rows;
 
     return (
         <TableRow className={`${hideWhenLoading}`}>
@@ -30,7 +34,7 @@ const DataRow = ({ data, loading }) => {
             <TableCell>{data.blockTime}</TableCell>
             <ModeButton hostname={data.hostname} />
         </TableRow>
-    )
-}
+    );
+};
 
-export default DataRow
+export default DataRow;
