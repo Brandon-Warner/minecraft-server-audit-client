@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import * as XLSX from 'xlsx'
-import fetchHelper from './services/servers'
-import { getNames, resetNames } from './reducers/namesReducer'
-import { getData, resetData } from './reducers/dataReducer'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import * as XLSX from 'xlsx';
+import fetchHelper from './services/servers';
+import { getNames, resetNames } from './reducers/namesReducer';
+import { getData, resetData } from './reducers/dataReducer';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
     createTheme,
@@ -16,27 +16,28 @@ import {
     TableBody,
     TableRow,
     Paper
-} from '@material-ui/core'
+} from '@material-ui/core';
 
-import Title from './components/Title'
-import Subtitle from './components/Subtitle'
-import Input from './components/Input'
-import Filter from './components/FilterSearch'
-import FilterCheckBox from './components/FilterCheckBox'
-import DataRow from './components/DataRow'
-import Loading from './components/Loading'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Title from './components/Title';
+import Navigation from './components/Navigation';
+import Subtitle from './components/Subtitle';
+import Input from './components/Input';
+import Filter from './components/FilterSearch';
+import FilterCheckBox from './components/FilterCheckBox';
+import DataRow from './components/DataRow';
+import Loading from './components/Loading';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const theme = createTheme({
     typography: {
-        fontFamily: ['Quicksand'],
+        fontFamily: ['Quicksand']
     },
     palette: {
         primary: { main: '#66fcf1' },
         secondary: { main: '#45a29e' },
         info: { main: '#def2f1' }
     }
-})
+});
 
 const useStyles = makeStyles(() => ({
     container: {
@@ -64,30 +65,32 @@ const useStyles = makeStyles(() => ({
     links: {
         margin: '10'
     }
-}))
+}));
 
 const App = () => {
-    const [loading, setLoading] = useState(false)
-    const classes = useStyles()
+    const [loading, setLoading] = useState(false);
+    const classes = useStyles();
 
-    const dispatch = useDispatch()
-    const filter = useSelector(state => state.filter)
-    const names = useSelector(state => state.names)
+    const dispatch = useDispatch();
+    const filter = useSelector(state => state.filter);
+    const names = useSelector(state => state.names);
     const data = useSelector(state => {
         if (filter === 'NO_FILTER') {
-            return state.data
+            return state.data;
         } else if (filter === 'BLOCKED_FILTER') {
-            return state.data.filter(data => data.blocked === 'yes')
+            return state.data.filter(data => data.blocked === 'yes');
         } else if (filter === 'AVAILABLE_FILTER') {
-            return state.data.filter(data => data.active === 'yes')
+            return state.data.filter(data => data.active === 'yes');
         } else if (
             filter !== 'NO_FILTER' &&
             filter !== 'BLOCKED_FILTER' &&
             filter !== 'AVAILABLE_FILTER'
         ) {
-            return state.data.filter(data => data.name.toLowerCase().includes(filter.toLowerCase()))
+            return state.data.filter(data =>
+                data.name.toLowerCase().includes(filter.toLowerCase())
+            );
         }
-    })
+    });
 
     useEffect(() => {
         names.map(name =>
@@ -95,65 +98,66 @@ const App = () => {
                 .fetchData(name)
                 .then(response => dispatch(getData(response)))
                 .catch(e => console.log('error: ', e.message))
-        )
-        console.log('firing useEffect')
-    }, [names, dispatch])
+        );
+        console.log('firing useEffect');
+    }, [names, dispatch]);
 
     useEffect(() => {
-        stopLoading(names, data)
-    })
+        stopLoading(names, data);
+    });
 
     const refreshData = e => {
-        e.preventDefault()
-        setLoading(true)
-        const currentNames = names
-        console.log('refreshData names: ', currentNames)
-        dispatch(resetData())
-        dispatch(resetNames())
+        e.preventDefault();
+        setLoading(true);
+        const currentNames = names;
+        console.log('refreshData names: ', currentNames);
+        dispatch(resetData());
+        dispatch(resetNames());
         setTimeout(() => {
-            dispatch(getNames(currentNames))
-        }, 200)
-    }
+            dispatch(getNames(currentNames));
+        }, 200);
+    };
 
     const handleFileUpload = e => {
-        e.preventDefault()
-        setLoading(true)
-        dispatch(resetNames())
-        dispatch(resetData())
-        const file = e.target.files[0]
-        const reader = new FileReader()
+        e.preventDefault();
+        setLoading(true);
+        dispatch(resetNames());
+        dispatch(resetData());
+        const file = e.target.files[0];
+        const reader = new FileReader();
         reader.onload = e => {
             // PARSE DATA
-            const bstr = e.target.result
-            const workbook = XLSX.read(bstr, { type: 'binary' })
+            const bstr = e.target.result;
+            const workbook = XLSX.read(bstr, { type: 'binary' });
             // GET FIRST WORKSHEET
-            const wsname = workbook.SheetNames[0]
-            const ws = workbook.Sheets[wsname]
+            const wsname = workbook.SheetNames[0];
+            const ws = workbook.Sheets[wsname];
             // CONVERT ARRAY OF ARRAYS
-            const data = XLSX.utils.sheet_to_csv(ws, { header: 1 })
-            console.log('data from file upload: ', data)
+            const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
+            console.log('data from file upload: ', data);
 
-            const list = data.split(/\r\n|\n/)
-            const filteredList = list.filter(e => e !== '' && e !== undefined)
-            dispatch(getNames(filteredList))
-        }
-        reader.readAsBinaryString(file)
-    }
+            const list = data.split(/\r\n|\n/);
+            const filteredList = list.filter(e => e !== '' && e !== undefined);
+            dispatch(getNames(filteredList));
+        };
+        reader.readAsBinaryString(file);
+    };
 
     const stopLoading = (data, names) => {
         if (data.length > 0 && names.length > 0 && data.length === names.length) {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
 
-    console.log('App component names: ', names)
-    console.log('App component data: ', data)
-    console.log('loading status: ', loading)
+    console.log('App component names: ', names);
+    console.log('App component data: ', data);
+    console.log('loading status: ', loading);
 
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.container}>
                 <div>
+                    <Navigation />
                     <Title />
                     <Subtitle />
                     <Input onChange={handleFileUpload} refreshData={refreshData} />
@@ -220,7 +224,7 @@ const App = () => {
                 </div>
             </div>
         </ThemeProvider>
-    )
-}
+    );
+};
 
-export default App
+export default App;
