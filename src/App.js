@@ -26,6 +26,7 @@ import Filter from './components/FilterSearch';
 import FilterCheckBox from './components/FilterCheckBox';
 import DataRow from './components/DataRow';
 import Loading from './components/Loading';
+import SingleSearch from './components/SingleSearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const theme = createTheme({
@@ -69,7 +70,7 @@ const useStyles = makeStyles(() => ({
 
 const App = () => {
     const [loading, setLoading] = useState(false);
-    // const [page, setPage] = useState('multiple');
+    const [page, setPage] = useState('single');
 
     const classes = useStyles();
 
@@ -155,78 +156,91 @@ const App = () => {
     console.log('App component data: ', data);
     console.log('loading status: ', loading);
 
+    if (page === 'multiple') {
+        return (
+            <ThemeProvider theme={theme}>
+                <div className={classes.container}>
+                    <div>
+                        <Navigation setPage={setPage} />
+                        <Title />
+                        <Subtitle />
+                        <Input onChange={handleFileUpload} refreshData={refreshData} />
+                        <div className={classes.filterRow}>
+                            <Filter />
+                            <FilterCheckBox />
+                        </div>
+                        <TableContainer component={Paper}>
+                            <Table className={classes.table} aria-label='Server Info'>
+                                <TableHead className={classes.headers}>
+                                    <TableRow key='headers'>
+                                        <TableCell>Name</TableCell>
+                                        <TableCell>Hostname</TableCell>
+                                        <TableCell>Ip</TableCell>
+                                        <TableCell>Version</TableCell>
+                                        <TableCell>Active</TableCell>
+                                        <TableCell>Players Online</TableCell>
+                                        <TableCell>Players Max</TableCell>
+                                        <TableCell>Blocked</TableCell>
+                                        <TableCell>Blocked Date</TableCell>
+                                        <TableCell>Mode</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {names.map(name => (
+                                        <Loading key={name} loading={loading} />
+                                    ))}
+
+                                    {data.map(data => (
+                                        <DataRow key={data.name} data={data} loading={loading} />
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </div>
+                    <div style={{ textAlign: 'center' }}>
+                        <footer style={{ display: 'inline', width: '100%' }}>
+                            <a
+                                style={{ margin: '0 10px', color: '#66fcf1' }}
+                                href='https://api.mcsrvstat.us/'
+                                target='_blank'
+                                rel='noopener noreferrer'
+                            >
+                                Server Data API
+                            </a>
+                            {'  '}
+                            <a
+                                style={{ margin: '0 10px', color: '#66fcf1' }}
+                                href='https://ismyserverblocked.com/'
+                                target='_blank'
+                                rel='noopener noreferrer'
+                            >
+                                Block/Offline Data API
+                            </a>
+                            <a
+                                style={{ margin: '0 10px', color: '#66fcf1' }}
+                                href='https://github.com/Brandon-Warner/minecraft-server-audit-client'
+                                target='_blank'
+                                rel='noopener noreferrer'
+                            >
+                                <FontAwesomeIcon icon={['fab', 'github']} size='lg' />
+                            </a>
+                        </footer>
+                    </div>
+                </div>
+            </ThemeProvider>
+        );
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.container}>
                 <div>
-                    <Navigation />
+                    <Navigation setPage={setPage} />
                     <Title />
-                    <Subtitle />
-                    <Input onChange={handleFileUpload} refreshData={refreshData} />
-                    <div className={classes.filterRow}>
-                        <Filter />
-                        <FilterCheckBox />
-                    </div>
-                    <TableContainer component={Paper}>
-                        <Table className={classes.table} aria-label='Server Info'>
-                            <TableHead className={classes.headers}>
-                                <TableRow key='headers'>
-                                    <TableCell>Name</TableCell>
-                                    <TableCell>Hostname</TableCell>
-                                    <TableCell>Ip</TableCell>
-                                    <TableCell>Version</TableCell>
-                                    <TableCell>Active</TableCell>
-                                    <TableCell>Players Online</TableCell>
-                                    <TableCell>Players Max</TableCell>
-                                    <TableCell>Blocked</TableCell>
-                                    <TableCell>Blocked Date</TableCell>
-                                    <TableCell>Mode</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {names.map(name => (
-                                    <Loading key={name} loading={loading} />
-                                ))}
-
-                                {data.map(data => (
-                                    <DataRow key={data.name} data={data} loading={loading} />
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                    <footer style={{ display: 'inline', width: '100%' }}>
-                        <a
-                            style={{ margin: '0 10px', color: '#66fcf1' }}
-                            href='https://api.mcsrvstat.us/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                        >
-                            Server Data API
-                        </a>
-                        {'  '}
-                        <a
-                            style={{ margin: '0 10px', color: '#66fcf1' }}
-                            href='https://ismyserverblocked.com/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                        >
-                            Block/Offline Data API
-                        </a>
-                        <a
-                            style={{ margin: '0 10px', color: '#66fcf1' }}
-                            href='https://github.com/Brandon-Warner/minecraft-server-audit-client'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                        >
-                            <FontAwesomeIcon icon={['fab', 'github']} size='lg' />
-                        </a>
-                    </footer>
+                    <SingleSearch />
                 </div>
             </div>
         </ThemeProvider>
     );
 };
-
 export default App;

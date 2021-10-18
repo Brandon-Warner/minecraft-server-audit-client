@@ -28,17 +28,24 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-const Navigation = () => {
+const Navigation = ({ setPage }) => {
     const classes = useStyles();
+
+    const pageToSingle = () => setPage('single');
+    const pageToMultiple = () => setPage('multiple');
 
     return (
         <div>
             <ul className={classes.list}>
                 <li className={classes.list}>
-                    <button className={classes.listButton}>SINGLE SEARCH</button>
+                    <button className={classes.listButton} onClick={pageToSingle}>
+                        SINGLE SEARCH
+                    </button>
                 </li>
                 <li className={classes.list}>
-                    <button className={classes.listButton}>MULTIPLE SEARCH</button>
+                    <button className={classes.listButton} onClick={pageToMultiple}>
+                        MULTIPLE SEARCH
+                    </button>
                 </li>
             </ul>
         </div>
