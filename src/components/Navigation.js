@@ -32,7 +32,7 @@ const Navigation = ({ setPage }) => {
     const classes = useStyles();
 
     const pageToSingle = () => setPage('single');
-    const pageToMultiple = () => setPage('multiple');
+    const pageToMultiple = () => setPage('multi');
 
     return (
         <div>

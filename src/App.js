@@ -70,7 +70,7 @@ const useStyles = makeStyles(() => ({
 
 const App = () => {
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState('single');
+    const [page, setPage] = useState('multi');
 
     const classes = useStyles();
 
@@ -156,7 +156,7 @@ const App = () => {
     console.log('App component data: ', data);
     console.log('loading status: ', loading);
 
-    if (page === 'multiple') {
+    if (page === 'multi') {
         return (
             <ThemeProvider theme={theme}>
                 <div className={classes.container}>
