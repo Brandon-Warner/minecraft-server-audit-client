@@ -49,14 +49,14 @@ const onlineInfoResponse = data => {
 };
 
 const fetchData = async name => {
-    console.log('fetchData name: ', name);
+    // console.log('fetchData name: ', name);
     const server_data = await axios.get(`${baseUrl}/serverinfo/${name}`);
     const serverInfo = server_data.data;
 
     const block_data = await axios.get(`${baseUrl}/blockinfo/${name}`);
     const blockInfo = block_data.data;
 
-    console.log('fetch data: ', serverInfo, blockInfo);
+    // console.log('fetch data: ', serverInfo, blockInfo);
 
     const allData = {
         name: name,
@@ -69,7 +69,7 @@ const fetchData = async name => {
         blocked: isBlocked(blockInfo.blocked),
         blockTime: formatDate(blockInfo.lastBlocked)
     };
-    console.log('allData: ', allData);
+    // console.log('allData: ', allData);
     return allData;
 };
 
@@ -83,9 +83,9 @@ const fetchAllData = async name => {
     const offline_data = await axios.get(`${baseUrl}/offlineinfo/${name}`);
     const offlineInfo = offline_data.data;
 
-    console.log('fetch all data SERVER INFO: ', serverInfo);
-    console.log('fetch all data BLOCK INFO: ', blockInfo);
-    console.log('fetch all data ONLINE INFO: ', offlineInfo);
+    // console.log('fetch all data SERVER INFO: ', serverInfo);
+    // console.log('fetch all data BLOCK INFO: ', blockInfo);
+    // console.log('fetch all data ONLINE INFO: ', offlineInfo);
 
     const allData = {
         name: name,
@@ -99,7 +99,7 @@ const fetchAllData = async name => {
         blockTime: formatDate(blockInfo.lastBlocked),
         modeData: onlineInfoResponse(offlineInfo)
     };
-    console.log('allData: ', allData);
+    // console.log('allData: ', allData);
     return allData;
 };
 

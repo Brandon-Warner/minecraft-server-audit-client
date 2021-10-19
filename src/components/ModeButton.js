@@ -37,7 +37,7 @@ const ModeButton = ({ hostname }) => {
                 `https://fast-thicket-91718.herokuapp.com/api/offlineinfo/${hostname}`
             )
             const response = data.data
-            console.log('ACTIVE BUTTON response: ', response)
+            // console.log('ACTIVE BUTTON response: ', response)
             if (!response.success) {
                 setFetchResponse('Error while checking offline-mode status')
             } else if (response.offlineMode) {
@@ -57,7 +57,7 @@ const ModeButton = ({ hostname }) => {
         setOpen(!open)
         setButtonLoading(false)
     }
-    console.log('fetchResponse: ', fetchResponse)
+    // console.log('fetchResponse: ', fetchResponse)
 
     return (
         <TableCell>

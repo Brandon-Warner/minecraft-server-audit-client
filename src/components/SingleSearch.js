@@ -12,7 +12,8 @@ import {
     Paper,
     makeStyles,
     TextField,
-    Button
+    Button,
+    CircularProgress
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -62,6 +63,12 @@ const useStyles = makeStyles(() => ({
         color: '#eee',
         letterSpacing: '1.5px',
         fontWeight: 'bold'
+    },
+    searchButton: {
+        margin: '10px'
+    },
+    buttonLoading: {
+        color: '#45a29e'
     }
 }));
 
@@ -69,7 +76,8 @@ const SingleSearch = () => {
     const [name, setName] = useState('');
     const [searchName, setSearchName] = useState('');
     const [result, setResult] = useState([]);
-    console.log('result arr: ', result);
+    const [buttonLoading, setButtonLoading] = useState(false);
+    console.log('buttonLoading: ', buttonLoading);
     const classes = useStyles();
 
     useEffect(() => {
@@ -77,6 +85,8 @@ const SingleSearch = () => {
             .fetchAllData(searchName)
             .then(response => setResult([...result, response]))
             .catch(e => console.log('error: ', e.message));
+
+        setButtonLoading(false);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchName]);
 
@@ -85,6 +95,7 @@ const SingleSearch = () => {
 
         setSearchName(name);
         setName('');
+        setButtonLoading(true);
     };
 
     const cancelResult = e => {
@@ -119,9 +130,13 @@ const SingleSearch = () => {
                         color='primary'
                         component='button'
                         type='submit'
-                        style={{ margin: '10px' }}
+                        className={classes.searchButton}
                     >
-                        search
+                        {buttonLoading ? (
+                            <CircularProgress className={classes.buttonLoading} />
+                        ) : (
+                            'search'
+                        )}
                     </Button>
 
                     <Button

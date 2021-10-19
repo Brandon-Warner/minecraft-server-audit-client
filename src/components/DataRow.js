@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const DataRow = ({ data, loading }) => {
-    console.log('DATAROW DATA: ', data);
+    // console.log('DATAROW DATA: ', data);
     const classes = useStyles();
 
     const hideWhenLoading = loading ? classes.hidden : classes.rows;

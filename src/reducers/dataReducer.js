@@ -16,7 +16,7 @@ export const resetData = () => {
 }
 
 const dataReducer = (state = [], action) => {
-    console.log('ACTION.DATA: ', action.data)
+    // console.log('ACTION.DATA: ', action.data)
     switch (action.type) {
         case 'GET_DATA':
             return [...state, action.data]

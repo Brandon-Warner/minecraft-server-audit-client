@@ -113,7 +113,7 @@ const App = () => {
         e.preventDefault();
         setLoading(true);
         const currentNames = names;
-        console.log('refreshData names: ', currentNames);
+        // console.log('refreshData names: ', currentNames);
         dispatch(resetData());
         dispatch(resetNames());
         setTimeout(() => {
@@ -137,7 +137,7 @@ const App = () => {
             const ws = workbook.Sheets[wsname];
             // CONVERT ARRAY OF ARRAYS
             const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
-            console.log('data from file upload: ', data);
+            // console.log('data from file upload: ', data);
 
             const list = data.split(/\r\n|\n/);
             const filteredList = list.filter(e => e !== '' && e !== undefined);
@@ -152,9 +152,9 @@ const App = () => {
         }
     };
 
-    console.log('App component names: ', names);
-    console.log('App component data: ', data);
-    console.log('loading status: ', loading);
+    // console.log('App component names: ', names);
+    // console.log('App component data: ', data);
+    // console.log('loading status: ', loading);
 
     if (page === 'multi') {
         return (
