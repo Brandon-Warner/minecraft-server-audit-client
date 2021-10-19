@@ -68,15 +68,16 @@ const useStyles = makeStyles(() => ({
 const SingleSearch = () => {
     const [name, setName] = useState('');
     const [searchName, setSearchName] = useState('');
-    const [result, setResult] = useState('');
-
+    const [result, setResult] = useState([]);
+    console.log('result arr: ', result);
     const classes = useStyles();
 
     useEffect(() => {
         fetchHelper
             .fetchAllData(searchName)
-            .then(response => setResult(response))
+            .then(response => setResult([...result, response]))
             .catch(e => console.log('error: ', e.message));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchName]);
 
     const submit = e => {
@@ -136,20 +137,22 @@ const SingleSearch = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow className={classes.rows}>
-                                <TableCell>{result.name}</TableCell>
-                                <TableCell>{result.hostname}</TableCell>
-                                <TableCell>{result.ip}</TableCell>
-                                <TableCell>{result.version}</TableCell>
-                                <TableCell>{result.active}</TableCell>
-                                <TableCell>{result.playersOnline}</TableCell>
-                                <TableCell>{result.playersMax}</TableCell>
-                                <TableCell>{result.blocked}</TableCell>
-                                <TableCell>{result.blockTime}</TableCell>
-                                <TableCell style={{ maxWidth: '300px' }}>
-                                    {result.modeData}
-                                </TableCell>
-                            </TableRow>
+                            {result.map(r => (
+                                <TableRow key={r.name} className={classes.rows}>
+                                    <TableCell>{r.name}</TableCell>
+                                    <TableCell>{r.hostname}</TableCell>
+                                    <TableCell>{r.ip}</TableCell>
+                                    <TableCell>{r.version}</TableCell>
+                                    <TableCell>{r.active}</TableCell>
+                                    <TableCell>{r.playersOnline}</TableCell>
+                                    <TableCell>{r.playersMax}</TableCell>
+                                    <TableCell>{r.blocked}</TableCell>
+                                    <TableCell>{r.blockTime}</TableCell>
+                                    <TableCell style={{ maxWidth: '300px' }}>
+                                        {r.modeData}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
