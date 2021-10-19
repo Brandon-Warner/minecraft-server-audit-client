@@ -18,12 +18,12 @@ const useStyles = makeStyles(() => ({
         color: '#66fcf1',
         letterSpacing: '1.5px',
         fontSize: '16px',
+        transition: 'all 300ms linear',
+        cursor: 'pointer',
 
         '&:hover': {
             transform: 'scale(1.10)',
-            textDecoration: 'underline',
-            transition: 'all 300ms linear',
-            cursor: 'pointer'
+            textDecoration: 'underline'
         }
     }
 }));
@@ -44,7 +44,7 @@ const Navigation = ({ setPage }) => {
                 </li>
                 <li className={classes.list}>
                     <button className={classes.listButton} onClick={pageToMultiple}>
-                        MULTIPLE SEARCH
+                        MULTI SEARCH
                     </button>
                 </li>
             </ul>
