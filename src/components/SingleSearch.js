@@ -59,7 +59,7 @@ const useStyles = makeStyles(() => ({
         width: '40%'
     },
     input: {
-        color: '#66fcf1',
+        color: '#eee',
         letterSpacing: '1.5px',
         fontWeight: 'bold'
     }
@@ -107,7 +107,13 @@ const SingleSearch = () => {
                         }}
                     />
                     <SearchIcon style={{ marginTop: '5px' }} color='primary' />
-                    <Button variant='contained' color='primary' component='label' style={{margin: '10px'}}>
+                    <Button
+                        variant='contained'
+                        color='primary'
+                        component='button'
+                        type='submit'
+                        style={{ margin: '10px' }}
+                    >
                         search
                     </Button>
                 </form>
