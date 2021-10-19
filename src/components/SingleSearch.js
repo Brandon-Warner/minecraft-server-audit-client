@@ -87,6 +87,12 @@ const SingleSearch = () => {
         setName('');
     };
 
+    const cancelResult = e => {
+        e.preventDefault();
+
+        setResult([]);
+    };
+
     return (
         <div>
             <div className={classes.formContainer}>
@@ -116,6 +122,15 @@ const SingleSearch = () => {
                         style={{ margin: '10px' }}
                     >
                         search
+                    </Button>
+
+                    <Button
+                        variant='contained'
+                        color='secondary'
+                        size='small'
+                        onClick={cancelResult}
+                    >
+                        CLEAR RESULTS
                     </Button>
                 </form>
             </div>
