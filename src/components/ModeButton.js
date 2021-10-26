@@ -1,93 +1,64 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { makeStyles, Button, TableCell, CircularProgress } from '@material-ui/core'
-import Modal from 'react-modal'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { makeStyles, Button, TableCell, CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
     buttonLoading: {
         color: '#45a29e'
     }
-}))
+}));
 
 const ModeButton = ({ hostname }) => {
-    const [open, setOpen] = useState(false)
-    const [buttonLoading, setButtonLoading] = useState(false)
-    const [fetchResponse, setFetchResponse] = useState('')
+    const [open, setOpen] = useState(false);
+    const [buttonLoading, setButtonLoading] = useState(false);
+    const [fetchResponse, setFetchResponse] = useState('');
 
-    const classes = useStyles()
-
-    const customStyles = {
-        content: {
-            fontFamily: 'Quicksand',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-            color: '#1f2833',
-        }
-    }
+    const classes = useStyles();
 
     const fetchData = async hostname => {
-        setButtonLoading(true)
+        setButtonLoading(true);
         try {
             const data = await axios.get(
                 `https://fast-thicket-91718.herokuapp.com/api/offlineinfo/${hostname}`
-            )
-            const response = data.data
+            );
+            const response = data.data;
             // console.log('ACTIVE BUTTON response: ', response)
             if (!response.success) {
-                setFetchResponse('Error while checking offline-mode status')
+                setFetchResponse('Error while checking offline-mode status');
             } else if (response.offlineMode) {
-                setFetchResponse('Server is using offline mode')
+                setFetchResponse('Server is using offline mode');
             } else {
                 setFetchResponse(
                     "Server aborted the join process, it's either using online mode or a whitelist"
-                )
+                );
                 if (response.reason) {
-                    fetchResponse.concat(`reason was: ${response.reason}`)
+                    fetchResponse.concat(`reason was: ${response.reason}`);
                 }
             }
         } catch (error) {
-            setFetchResponse('error connecting to server - please try again later')
+            setFetchResponse('error connecting to server - please try again later');
         }
 
-        setOpen(!open)
-        setButtonLoading(false)
-    }
+        setOpen(!open);
+        setButtonLoading(false);
+    };
     // console.log('fetchResponse: ', fetchResponse)
 
     return (
         <TableCell>
-            <Button variant='contained' color='primary' onClick={() => fetchData(hostname)}>
-                {buttonLoading ? <CircularProgress className={classes.buttonLoading} /> : 'Mode'}
-            </Button>
-            <div>
-                <Modal
-                    isOpen={open}
-                    onRequestClose={() => setOpen(false)}
-                    ariaHideApp={false}
-                    style={customStyles}
-                    className={classes.modal}
-                >
-                    <h2>Active Status</h2>
-                    {fetchResponse}
-                    <br />
-                    <br />
-                    <Button
-                        variant='contained'
-                        color='secondary'
-                        size='small'
-                        onClick={() => setOpen(!open)}
-                    >
-                        close
-                    </Button>
-                </Modal>
-            </div>
+            {fetchResponse ? (
+                fetchResponse
+            ) : (
+                <Button variant='contained' color='primary' onClick={() => fetchData(hostname)}>
+                    {buttonLoading ? (
+                        <CircularProgress className={classes.buttonLoading} />
+                    ) : (
+                        'Mode'
+                    )}
+                </Button>
+            )}
         </TableCell>
-    )
-}
+    );
+};
 
-export default ModeButton
+export default ModeButton;
