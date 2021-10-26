@@ -70,7 +70,7 @@ const useStyles = makeStyles(() => ({
 
 const App = () => {
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState('multi');
+    const [page, setPage] = useState('single');
 
     const classes = useStyles();
 
