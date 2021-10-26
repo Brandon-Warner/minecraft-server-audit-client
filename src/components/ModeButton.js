@@ -53,7 +53,7 @@ const ModeButton = ({ hostname }) => {
                     {buttonLoading ? (
                         <CircularProgress className={classes.buttonLoading} />
                     ) : (
-                        'Mode'
+                        'Check'
                     )}
                 </Button>
             )}
