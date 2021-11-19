@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 
 const baseUrl = 'https://fast-thicket-91718.herokuapp.com/api';
@@ -59,7 +60,7 @@ const fetchData = async name => {
     const server_data = await axios.get(`${baseUrl}/serverinfo/${name}`);
     const serverInfo = server_data.data;
 
-    const block_data = await axios.get(`${baseUrl}/blockinfo/${newName}${host}`);
+    const block_data = await axios.get(`${baseUrl}/blockinfo/${newName}`);
     const blockInfo = block_data.data;
 
     // console.log('fetch data: ', serverInfo, blockInfo);
@@ -90,7 +91,7 @@ const fetchAllData = async name => {
     const server_data = await axios.get(`${baseUrl}/serverinfo/${name}`);
     const serverInfo = server_data.data;
 
-    const block_data = await axios.get(`${baseUrl}/blockinfo/${newName}${host}`);
+    const block_data = await axios.get(`${baseUrl}/blockinfo/${newName}`);
     const blockInfo = block_data.data;
 
     const offline_data = await axios.get(`${baseUrl}/offlineinfo/${name}`);
