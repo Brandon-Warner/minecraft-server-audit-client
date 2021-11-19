@@ -50,10 +50,16 @@ const onlineInfoResponse = data => {
 
 const fetchData = async name => {
     // console.log('fetchData name: ', name);
+
+    const [newName, host] = name.split(':');
+
+    // console.log('newName: ', newName);
+    // console.log('host: ', host);
+
     const server_data = await axios.get(`${baseUrl}/serverinfo/${name}`);
     const serverInfo = server_data.data;
 
-    const block_data = await axios.get(`${baseUrl}/blockinfo/${name}`);
+    const block_data = await axios.get(`${baseUrl}/blockinfo/${newName}${host}`);
     const blockInfo = block_data.data;
 
     // console.log('fetch data: ', serverInfo, blockInfo);
@@ -74,10 +80,17 @@ const fetchData = async name => {
 };
 
 const fetchAllData = async name => {
+    // console.log('fetchAllData: ', name);
+
+    const [newName, host] = name.split(':');
+
+    // console.log('newName: ', newName);
+    // console.log('host: ', host);
+
     const server_data = await axios.get(`${baseUrl}/serverinfo/${name}`);
     const serverInfo = server_data.data;
 
-    const block_data = await axios.get(`${baseUrl}/blockinfo/${name}`);
+    const block_data = await axios.get(`${baseUrl}/blockinfo/${newName}${host}`);
     const blockInfo = block_data.data;
 
     const offline_data = await axios.get(`${baseUrl}/offlineinfo/${name}`);
